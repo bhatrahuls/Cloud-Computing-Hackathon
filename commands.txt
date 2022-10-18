@@ -1,0 +1,25 @@
+kubectl delete pod --all
+kubectl delete deploy --all
+docker rmi -f blogapp:1.0
+
+
+docker pull python
+docker pull mongo-express
+docker pull mongo
+
+
+docker build . -f flask-app-image.dockerfile -t blogapp:1.0
+
+
+kubectl apply -f secret.yaml
+kubectl apply -f configmap.yaml
+kubectl apply -f services.yaml
+kubectl apply -f deployments.yaml
+
+
+kubectl get pod
+
+
+ECHO Access through "http://localhost:5000"
+start "" http://localhost:5000
+
